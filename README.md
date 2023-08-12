@@ -26,9 +26,9 @@ The integration with the Google Smart Home stuff is insanely involved (and for m
 
 Long Term, I plan on accomplishing the following things:
 
--[ ] Separate the Event Collectors into "plugins" that can be easily enable and disabled. This will make it easy to write additional even sources later.
--[ ] Update the UI to make it easier to manage your plugins and sensitive data like API keys, etc.
--[ ] Add a commercials feature that, with some options for prompting, can have [ChatGPT](https://openai.com/blog/chatgpt) and [ElevenLabs](https://elevenlabs.io/) generate commercials or other content. The goal being you can string this files together to eventually create your own station full of content
--[ ] Testing - since this is currently a develop-by-the-seat-of-my-pants operation without a clear spec, testing doesn't exist but I'd want this to change as the features solidify more.
--[ ] Add support for more DB engines - currently this was designed for a Raspberry Pi 4 and uses SQLite.
--[ ] Use something more robust than `Thread` - don't get me wrong the simplicity of this is great and it hasn't given me any trouble but I'm not going to pretend I know what I'm doing with Threads - it'd be good to implement a better-developed job queue engine of some sort.
+- [ ] Separate the Event Collectors into "plugins" that can be easily enable and disabled. This will make it easy to write additional even sources later.
+- [ ] Update the UI to make it easier to manage your plugins and sensitive data like API keys, etc.
+- [ ] Add a commercials feature that, with some options for prompting, can have [ChatGPT](https://openai.com/blog/chatgpt) and [ElevenLabs](https://elevenlabs.io/) generate commercials or other content. The goal being you can string this files together to eventually create your own station full of content
+- [ ] Testing - since this is currently a develop-by-the-seat-of-my-pants operation without a clear spec, testing doesn't exist but I'd want this to change as the features solidify more.
+- [ ] Add support for more DB engines - currently this was designed for a Raspberry Pi 4 and uses SQLite.
+- [ ] Use something more robust than `Thread` - don't get me wrong the simplicity of this is great and it hasn't given me any trouble but I'm not going to pretend I know what I'm doing with Threads - it'd be good to implement a better-developed job queue engine of some sort.
