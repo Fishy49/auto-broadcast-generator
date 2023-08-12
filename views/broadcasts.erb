@@ -1,0 +1,57 @@
+<div class="relative overflow-x-auto max-w-7xl mx-auto sm:rounded-lg">
+  <div class="text-center mb-5 mx-auto w-full">
+    <%= pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">ID</th>
+        <th scope="col" class="px-6 py-3">Date Created</th>
+        <th scope="col" class="px-6 py-3">Step/Status</th>
+        <th scope="col" class="px-6 py-3">Length</th>
+        <th scope="col" class="px-6 py-3"></th>
+        <th scope="col" class="px-6 py-3"></th>
+        <th scope="col" class="px-6 py-3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @broadcasts.each do |broadcast| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= broadcast.id %>
+          </th>
+          <td class="px-6 py-4">
+            <%= broadcast.created_at.strftime("%Y/%m/%d %I:%M:%S %p") %>
+          </td>
+          <td class="px-6 py-4">
+            <%= titleize(broadcast.current_step) %> | <%= titleize(broadcast.status) %>
+          </td>
+          <td class="px-6 py-4">
+            <%= broadcast.length %>
+          </td>
+          <td class="px-6 py-4">
+            <% unless broadcast.audio_file.nil? %>
+              <audio preload="metadata" controls src="/broadcast-audio/<%= broadcast.id %>"></audio>
+            <% end %>
+          </td>
+          <td class="px-6 py-4">
+            <a href="/broadcasts/<%= broadcast.id %>" class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-fit">
+              View
+            </a>
+          </td>
+          <td class="px-6 py-4">
+            <form action="/broadcast/<%= broadcast.id %>" method="post">
+              <input type="hidden" name="_method" value="DELETE">
+              <button @click.prevent="deleteRecord($event)" class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-fit">
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center my-5 mx-auto w-full">
+    <%= pagy_nav(@pagy) if @pagy.pages > 1 %>
+  </div>
+</div>

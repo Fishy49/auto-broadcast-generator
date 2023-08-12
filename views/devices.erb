@@ -1,0 +1,18 @@
+<div class="w-2/3 mx-auto">
+	<h2 class="text-lg text-center mb-5">These are the Nest devices that are authenticated with your credentials - they will be the only ones you get events from. If you are missing devices then head over to the <a href="/google">Google</a> page and re-authenticate with "Nest"</h2>
+	<div class="grid grid-flow-row gap-4 md:grid-cols-3 sm:grid-cols-1 justify-start">
+		<% begin %>
+			<% @gd.list.devices.each do |device| %>
+				<%= partial(:card, { type: device.type.split(".").last.downcase, title: device.traits["sdm.devices.traits.Info"]["customName"], description: "Located in #{device.parent_relations.first.display_name}" }) %>
+			<% end %>
+		<% rescue Signet::AuthorizationError => e %>
+			<div class="col-span-3 bg-red-100 border border-red-400 text-red-700 px-4 py-2 my-1 rounded relative text-center" role="alert">
+			  <span class="block sm:inline"><%= e.message %></span>
+			</div>
+		<% rescue Google::Apis::RateLimitError => e %>
+			<div class="col-span-3 bg-red-100 border border-red-400 text-red-700 px-4 py-2 my-1 rounded relative text-center" role="alert">
+			  <span class="block sm:inline">Rate limit error. Check back later.</span>
+			</div>
+		<% end %>
+	</div>
+</div>

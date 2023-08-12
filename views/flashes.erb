@@ -1,0 +1,18 @@
+<% flash.keys.each do |key| %>
+	<%
+		color = case key
+		when :info
+			'blue'
+		when :success
+			'green'
+		when :warning
+			'orange'
+		when :error
+			'red'
+		end
+	%>
+	<span class="hidden bg-blue-100 bg-green-100 bg-orange-100 bg-red-100 border-blue-400 border-green-400 border-orange-400 border-red-400 text-blue-700 text-green-700 text-orange-700 text-red-700"></span>
+	<div class="w-3/4 bg-<%= color %>-100 border border-<%= color %>-400 text-<%= color %>-700 px-4 py-2 my-1 rounded relative" role="alert">
+	  <span class="block sm:inline"><%= flash[key] %></span>
+	</div>
+<% end %>

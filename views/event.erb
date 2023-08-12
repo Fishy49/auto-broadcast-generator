@@ -1,0 +1,18 @@
+<div class="w-2/3 mx-auto">
+	<a href="/events"><- Back to Events</a>
+	<h2 class="text-lg text-center mb-5">Event Details</h2>
+
+	<p class="text-lg text-center font-bold">Event Text:</p>
+	<p class="text-center mb-5"><%= @event.event_text %></p>
+
+	<p class="text-lg text-center font-bold">Event Data:</p>
+	<% begin %>
+		<div class="whitespace-pre bg-gray-300 font-mono p-5 whitespace-pre-wrap"><%= JSON.pretty_generate(JSON.parse(@event.raw_source)) %></div>
+	<% rescue StandardError => e %>
+		<div class="whitespace-pre bg-gray-300 font-mono p-5 whitespace-pre-wrap">
+			There was an error parsing event data. Here's the output of `inspect`:
+
+			<%= @event.raw_source.inspect %>
+		</div>
+	<% end %>
+</div>

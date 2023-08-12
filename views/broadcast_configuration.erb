@@ -1,0 +1,195 @@
+<form action="/broadcast_configuration" method="POST" class="w-full max-w-xl mx-auto">
+	<h2 class="text-xl text-gray-600 text-center pb-1 mb-2 border-b-2 border-b-gray-200">Station Information</h2>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-station-name">
+        Station Name
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-station-name" type="text" value="<%= CONFIG.station_name || "#{Faker::App.name} Radio" %>" name="station_name">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-station-frequency">
+        Station Frequency
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-station-frequency" type="text" value="<%= CONFIG.station_frequency %>" name="station_frequency">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-station-era">
+        Station Era
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-station-era" type="text" value="<%= CONFIG.station_era || "1920's" %>" name="station_era">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-broadcaster-name">
+        Broadcaster Name
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-broadcaster-name" type="text" value="<%= CONFIG.broadcaster_name || Faker::Name.name_with_middle %>" name="broadcaster_name">
+    </div>
+  </div>
+ 	
+  <h2 class="text-xl text-gray-600 text-center mt-12 pb-1 mb-2 border-b-2 border-b-gray-200">OpenAI API Info</h2>
+
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-openai-access-token">
+        Access Token
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-openai-access-token" type="text" value="<%= CONFIG.openai_access_token %>" name="openai_access_token">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-openai-organization-id">
+        Organization ID
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-openai-organization-id" type="text" value="<%= CONFIG.openai_organization_id %>" name="openai_organization_id">
+    </div>
+  </div>
+
+  <h2 class="text-xl text-gray-600 text-center mt-12 pb-1 mb-2 border-b-2 border-b-gray-200">ElevenLabs Info</h2>
+
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-elevenlabs-api-key">
+        API Key
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-elevenlabs-api-key" type="text" value="<%= CONFIG.elevenlabs_api_key %>" name="elevenlabs_api_key">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-openai-organization-id">
+        Voice
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <div class="inline-block relative w-full">
+			  <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="elevenlabs_voice_id" data-id="<%= CONFIG.elevenlabs_voice_id %>">
+			  	<% if CONFIG.elevenlabs_api_key %>
+			  		<% ElevenLabs.voices.each do |voice| %>
+			  			<option value="<%= voice["voice_id"] %>" <%= "selected" if CONFIG.elevenlabs_voice_id == voice["voice_id"] %>>
+			  				<%= voice["name"] %> (<%= voice["category"] %>)
+			  			</option>
+			  		<% end %>
+			  	<% else %>
+			    	<option>Enter API Key To Select Voice</option>
+			    <% end %>
+			  </select>
+			  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+			    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+			  </div>
+			</div>
+    </div>
+  </div>
+
+  <h2 class="text-xl text-gray-600 text-center mt-12 pb-1 mb-2 border-b-2 border-b-gray-200">OpenWeatherMap API Info</h2>
+
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-openweathermap-api-key">
+        OpenWeatherMap API Key
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-openweathermap-api-key" type="text" value="<%= CONFIG.openweathermap_api_key %>" name="openweathermap_api_key">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-broadcaster-name">
+        Lat/Lon
+      </label>
+    </div>
+    <div class="md:flex flex-wrap md:w-2/3">
+	    <div class="md:w-1/2">
+	      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-2/3 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-broadcaster-name" type="text" value="<%= CONFIG.weather_lat %>" name="weather_lat">
+	    </div>
+	    <div class="md:w-1/2">
+	      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-2/3 py-2 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-broadcaster-name" type="text" value="<%= CONFIG.weather_lon %>" name="weather_lon">
+	    </div>
+	    <p class="md:w-max text-gray-600 text-xs italic">Needed if you want your broadcast to include local weather reports!</p>
+	  </div>
+  </div>
+
+  <h2 class="text-xl text-gray-600 text-center mt-12 pb-1 mb-2 border-b-2 border-b-gray-200">IMAP (Email) Info</h2>
+
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-imap-host">
+        IMAP Host
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-imap-host" type="text" value="<%= CONFIG.imap_host %>" name="imap_host">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-imap-port">
+        IMAP Port
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-imap-port" type="text" value="<%= CONFIG.imap_port || 993 %>" name="imap_port">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-imap-login">
+        IMAP Login
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-imap-login" type="text" value="<%= CONFIG.imap_login %>" name="imap_login">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-imap-password">
+        IMAP Passowrd
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-imap-password" type="password" value="<%= CONFIG.imap_password %>" name="imap_password">
+    </div>
+  </div>
+  <div class="md:flex md:items-center mb-6">
+    <div class="md:w-1/3">
+      <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-imap-search-terms">
+        IMAP Search Terms
+      </label>
+    </div>
+    <div class="md:w-2/3">
+      <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="inline-imap-search-terms" type="text" value="<%= CONFIG.imap_search_terms %>" name="imap_search_terms">
+      <p class="md:w-max text-gray-600 text-xs italic">Text in email SUBJECT you care about. Separate with pipes<br>(e.g "Out for Delivery | Shipped | Amazon.com Order")</p>
+    </div>
+  </div>
+
+  <div class="md:flex md:items-center">
+    <div class="md:w-full">
+      <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded w-full" type="submit">
+        Save
+      </button>
+    </div>
+  </div>
+</form>

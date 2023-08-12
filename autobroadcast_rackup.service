@@ -1,0 +1,16 @@
+[Unit]
+Description=AutoBroadCastGenerator Server Service
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=rick
+Group=rick
+WorkingDirectory=/home/rick/apps/auto-broadcast-generator
+ExecStart=/usr/local/bin/fish -ic "bundle exec rackup --host 0.0.0.0 --port 3000"
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target

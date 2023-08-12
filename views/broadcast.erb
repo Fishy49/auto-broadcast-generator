@@ -1,0 +1,94 @@
+<div class="w-2/3 mx-auto">
+	<a href="/broadcasts"><- Back to Broadcasts</a>
+	<h2 class="text-lg text-center mb-5">Broadcast Details</h2>
+
+	<div class="grid grid-cols-3 grid-flow-row mb-10">
+		<div>
+			<p class="text-lg text-center font-bold">Created At:</p>
+			<p class="text-center mb-5"><%= @broadcast.created_at.strftime("%Y/%m/%d %I:%M:%S %p") %></p>
+		</div>
+
+		<div>
+			<p class="text-lg text-center font-bold">Broadcast At:</p>
+			<p class="text-center mb-5"><%= @broadcast.broadcast_at&.strftime("%Y/%m/%d %I:%M:%S %p") %></p>
+		</div>
+
+		<div>
+			<p class="text-lg text-center font-bold">Archived At:</p>
+			<p class="text-center mb-5"><%= @broadcast.archived_at&.strftime("%Y/%m/%d %I:%M:%S %p") %></p>
+		</div>
+
+		<div>
+			<p class="text-lg text-center font-bold">Current Step:</p>
+			<p class="text-center mb-5"><%= titleize(@broadcast.current_step) %></p>
+		</div>
+
+		<div>
+			<p class="text-lg text-center font-bold">Status:</p>
+			<p class="text-center mb-5"><%= titleize(@broadcast.status) %></p>
+		</div>
+
+		<div>
+			<p class="text-lg text-center font-bold">Length:</p>
+			<p class="text-center mb-5"><%= @broadcast.length %> Seconds</p>
+		</div>
+
+		<div class="col-span-3 text-center">
+			<p class="text-lg text-center font-bold">Audio:</p>
+			<% unless @broadcast.audio_file.nil? %>
+				<figure>
+        	<audio class="w-full" controls src="/broadcast-audio/<%= @broadcast.id %>"></audio>
+					<figcaption class="text-sm"><%= @broadcast.audio_file %></figcaption>
+        </figure>
+      <% end %>
+		</div>
+	</div>
+
+	<div class="w-full mx-auto mb-10 rounded overflow-hidden shadow-lg" x-data="{ expanded: false }">
+	  <div class="px-6 py-4">
+	    <div class="font-bold text-xl mb-2 cursor-pointer" @click="expanded == true ? expanded = false : expanded = true">Script <span class="text-gray-400 text-xs">(Click to <span x-show="!expanded">expand</span><span x-show="expanded">collapse</span>)</span></div>
+	    <p class="text-gray-700 text-base" x-show="expanded">
+	      <%= @broadcast.script&.gsub(/(\r)?\n/, "<br/>") %>
+	    </p>
+	  </div>
+	</div>
+
+	<div class="w-full mx-auto mb-10 rounded overflow-hidden shadow-lg" x-data="{ expanded: false }">
+	  <div class="px-6 py-4">
+	    <div class="font-bold text-xl mb-2 cursor-pointer" @click="expanded == true ? expanded = false : expanded = true">Prompt (<%= TOKENIZER.encode(@broadcast.prompt).tokens.length if @broadcast.prompt %>) <span class="text-gray-400 text-xs">(Click to <span x-show="!expanded">expand</span><span x-show="expanded">collapse</span>)</span></div>
+	    <p class="text-gray-700 text-base" x-show="expanded">
+	      <%= @broadcast.prompt&.gsub(/(\r)?\n/, "<br/>") %>
+	    </p>
+	  </div>
+	</div>
+
+	<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+      <tr>
+        <th scope="col" class="px-6 py-3">Time</th>
+        <th scope="col" class="px-6 py-3">Log Level</th>
+        <th scope="col" class="px-6 py-3">Step</th>
+        <th scope="col" class="px-6 py-3">Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @broadcast.broadcast_generation_job.broadcast_generation_job_logs.each do |log| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= log.created_at.strftime("%Y/%m/%d %I:%M:%S %p") %>
+          </th>
+          <td class="px-6 py-4">
+            <%= titleize(log.log_level) %>
+          </td>
+          <td class="px-6 py-4">
+            <%= titleize(log.step) %>
+          </td>
+          <td class="px-6 py-4">
+            <%= log.message %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

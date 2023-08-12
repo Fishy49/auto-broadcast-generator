@@ -1,0 +1,13 @@
+require:
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'Rakefile'
+
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods

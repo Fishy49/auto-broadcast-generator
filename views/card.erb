@@ -1,0 +1,11 @@
+<div class="max-w-xs rounded overflow-hidden shadow-lg w-64">
+  <img class="w-full" src="/images/<%= type.downcase %>.png" alt="<%= type %>" width="200">
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2"><%= title %></div>
+    <p class="text-gray-700 text-base">
+      <% if defined?(description) %>
+        <%= description %>
+      <% end %>
+    </p>
+  </div>
+</div>

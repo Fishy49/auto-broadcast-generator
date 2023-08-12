@@ -1,0 +1,10 @@
+broadcast_audio/*
+!broadcast_audio/.keep
+*.sqlite3
+*.sqlite
+work/*
+!work/.keep
+!work/intro.mp3
+!work/outro.mp3
+!work/sample_vocals.mp3
+log.txt
