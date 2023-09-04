@@ -15,7 +15,7 @@ It then uses the `sox` library to mix in some intro/outro music.
 
 Viola! You get something like this:
 
-https://github.com/Fishy49/auto-broadcast-generator/assets/5632528/9242c7cb-7e00-4a3a-8cce-632f6ccb0fb7
+https://github.com/Fishy49/auto-broadcast-generator/raw/main/sample_broadcast.mp4
 
 You can then use your own cleverness to upload this to a playlist or maybe even look at [PiFmRds](https://github.com/ChristopheJacquet/PiFmRds) for some ideas!
 
