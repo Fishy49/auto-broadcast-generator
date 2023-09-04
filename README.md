@@ -17,6 +17,8 @@ Viola! You get something like this:
 
 https://github.com/Fishy49/auto-broadcast-generator/raw/main/sample_broadcast.mp4
 
+https://github.com/Fishy49/auto-broadcast-generator/assets/5632528/cbb7d100-7701-465d-88cc-3c021e0e2e08
+
 You can then use your own cleverness to upload this to a playlist or maybe even look at [PiFmRds](https://github.com/ChristopheJacquet/PiFmRds) for some ideas!
 
 ## Current State and Future
