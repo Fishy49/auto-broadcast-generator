@@ -28,7 +28,7 @@ class EmailCollector
     def email_event_text(email)
       [
         "An email from #{email.attr['ENVELOPE'].from.first.name}",
-        "with a subject of '#{email.attr['ENVELOPE'].subject}'",
+        "with a subject of '#{email.attr['ENVELOPE'].subject.gsub(/\p{Emoji_Presentation}/, '').strip}'",
         "was received at #{email.attr['ENVELOPE'].date.to_time.strftime('%D %I:%M:%S %p')}"
       ].join(' ')
     end
