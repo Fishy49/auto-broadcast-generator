@@ -1,15 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.1.1)
-      base64
-      bigdecimal
+    activesupport (7.0.8)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      connection_pool (>= 2.2.5)
-      drb
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
-      mutex_m
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
@@ -26,13 +21,10 @@ GEM
       activesupport
       tzinfo
     concurrent-ruby (1.2.2)
-    connection_pool (2.4.1)
     date (3.3.3)
     debug_inspector (1.1.0)
     declarative (0.0.20)
     dotenv (2.8.1)
-    drb (2.1.1)
-      ruby2_keywords
     erubi (1.12.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
@@ -118,7 +110,6 @@ GEM
     multipart-post (2.3.0)
     mustermann (2.0.2)
       ruby2_keywords (~> 0.0.1)
-    mutex_m (0.1.2)
     net-imap (0.3.7)
       date
       net-protocol
@@ -204,7 +195,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activesupport (~> 7.0)
+  activesupport (= 7.0.8)
   better_errors (~> 2.10)
   binding_of_caller (~> 1.0)
   clockwork (~> 3.0)

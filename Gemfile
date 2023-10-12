@@ -24,7 +24,7 @@ gem 'google-cloud-pubsub', '~> 2.15'
 
 gem 'logger', '~> 1.5'
 
-gem 'activesupport', '~> 7.0'
+gem "activesupport", "= 7.0.8"
 
 gem 'ruby-openai', '~> 4.0'
 
