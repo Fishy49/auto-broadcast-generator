@@ -72,8 +72,8 @@ class BroadcastGenerationJob < Sequel::Model
 
       log('Collecting Events')
       @events = [Event.active.latest_weather.first]
-      @events += Event.active.where(source: 'google').latest.limit(200).all
-      @events += Event.active.where(source: 'email').latest.limit(50).all
+      @events += Event.active.where(source: 'google').latest.limit(100).all
+      @events += Event.active.where(source: 'email').latest.limit(30).all
       event_list = @events.compact.map(&:event_text)
       log("Collected #{event_list.count} Events")
 
