@@ -15,7 +15,7 @@ class ElevenLabs
     File.open(filename, 'w') do |file|
       HTTParty.post(
         "#{BASE_URL}/text-to-speech/#{voice_id}/stream",
-        headers: download_headers, body: { text:, model_id: 'eleven_monolingual_v2' }.to_json, stream_body: true
+        headers: download_headers, body: { text:, model_id: 'eleven_monolingual_v1' }.to_json, stream_body: true
       ) do |fragment|
         raise StandardError, "Non-success status code while streaming #{fragment.code}" unless fragment.code == 200
 
