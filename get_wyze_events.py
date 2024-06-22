@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime, timedelta
 from wyze_sdk import Client
 from wyze_sdk.errors import WyzeApiError
 
@@ -57,10 +58,13 @@ camera_names = {
     "D03F27A8B7AB": "Dining Room Camera"
 }
 
+now = datetime.now()
+twelve_hours_ago = now - timedelta(hours=12)
+
 try:
     output_format = []
     for mac in macs:
-        events = client.events.list(device_ids=[mac])
+        events = client.events.list(device_ids=[mac], begin=twelve_hours_ago)
         for event in events:
             output_format.append(
                 {

@@ -50,5 +50,5 @@ module Clockwork
 
   every(30.minutes, 'collect_emails')
 
-  every(1.hour, 'collect_wyze_events')
+  every(8.hours, 'collect_wyze_events')
 end
