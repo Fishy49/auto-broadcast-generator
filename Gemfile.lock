@@ -127,6 +127,7 @@ DEPENDENCIES
   clockwork (~> 3.0)
   dotenv (~> 2.8)
   faker (~> 2.23)
+  faraday (~> 2.9)
   httparty (~> 0.21.0)
   logger (~> 1.5)
   net-imap (~> 0.3.4)

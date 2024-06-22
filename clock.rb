@@ -40,6 +40,9 @@ module Clockwork
       when 'collect_wyze_events'
         collector = WyzeEventCollector.new(LOGGER)
         collector.save_events
+      when 'collect_honeywell_status'
+        collector = HoneywellStatusCollector.new(LOGGER)
+        collector.save_status_as_event
       end
     end
   end
@@ -47,6 +50,8 @@ module Clockwork
   every(1.hour, 'generate_broadcast', if: ->(t) { t.hour == 20 })
 
   every(4.hours, 'collect_weather')
+
+  every(4.hours, 'collect_honeywell_status')
 
   every(30.minutes, 'collect_emails')
 

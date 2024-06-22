@@ -48,3 +48,5 @@ gem 'pagy', '~> 6.0'
 gem 'securerandom', '~> 0.2.2'
 
 gem "tokenizers", "~> 0.3.3"
+
+gem "faraday", "~> 2.9"
