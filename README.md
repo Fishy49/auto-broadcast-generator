@@ -24,8 +24,6 @@ You can then use your own cleverness to upload this to a playlist or maybe even 
 ## Current State and Future
 The current state as of writing is 0.1 - I have this working personally for me but to make this accessible and easy to implement for others will require a lot of work.
 
-The integration with the Google Smart Home stuff is insanely involved (and for me, running in sandbox mode).
-
 Long Term, I plan on accomplishing the following things:
 
 - [ ] Separate the Event Collectors into "plugins" that can be easily enable and disabled. This will make it easy to write additional even sources later.

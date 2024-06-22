@@ -37,8 +37,9 @@ module Clockwork
       when 'collect_emails'
         collector = EmailCollector.new(LOGGER)
         collector.save_events
-      when 'collect_google_events'
-        GoogleEventCollector.listen(LOGGER)
+      when 'collect_wyze_events'
+        collector = WyzeEventCollector.new(LOGGER)
+        collector.save_events
       end
     end
   end
@@ -49,5 +50,5 @@ module Clockwork
 
   every(30.minutes, 'collect_emails')
 
-  every(1.hour, 'collect_google_events')
+  every(1.hour, 'collect_wyze_events')
 end

@@ -14,13 +14,7 @@ gem 'sinatra-contrib', '~> 2.1'
 
 gem 'puma', '~> 6.0'
 
-gem 'googleauth', '~> 1.5'
-
-gem 'google-apis-smartdevicemanagement_v1', '~> 0.17.0'
-
 gem 'dotenv', '~> 2.8'
-
-gem 'google-cloud-pubsub', '~> 2.15'
 
 gem 'logger', '~> 1.5'
 

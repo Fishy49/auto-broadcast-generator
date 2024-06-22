@@ -151,21 +151,13 @@
 
             <!-- Links -->
             <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-              <% [:dashboard, :broadcast_configuration, :events, :broadcasts, :admin, :google].each do |slug| %>
+              <% [:dashboard, :broadcast_configuration, :events, :broadcasts, :admin].each do |slug| %>
                 <a href="/<%= slug %>" class="<%= (@current_page == slug) ? 'flex items-center w-full space-x-2 text-white bg-gray-600 rounded-lg' : 'flex items-center space-x-2 text-gray-600 transition-colors rounded-lg group hover:bg-gray-600 hover:text-white' %>">
                   <span aria-hidden="true" class="<%= (@current_page == slug) ? 'p-2 bg-gray-700 rounded-lg' : 'p-2 transition-colors rounded-lg group-hover:bg-gray-700 group-hover:text-white' %>">
                     <%= partial("svg/#{slug}".to_sym) %>
                   </span>
                   <span class="leading-4"><%= titleize(slug) %></span>
                 </a>
-                <% if slug == :google %>
-                  <a href="/google/devices" class="ml-4 <%= (@current_page == :devices) ? 'flex items-center w-full space-x-2 text-white bg-gray-600 rounded-lg' : 'flex items-center space-x-2 text-gray-600 transition-colors rounded-lg group hover:bg-gray-600 hover:text-white' %>">
-                    <span aria-hidden="true" class="<%= (@current_page == :devices) ? 'p-2 bg-gray-700 rounded-lg' : 'p-2 transition-colors rounded-lg group-hover:bg-gray-700 group-hover:text-white' %>">
-                      <%= partial("svg/devices".to_sym) %>
-                    </span>
-                    <span class="leading-4">Devices</span>
-                  </a>
-                <% end %>
               <% end %>
             </div>
           </nav>
@@ -178,11 +170,7 @@
       <div class="flex flex-col flex-1">
         <header class="relative flex items-center align-middle justify-between flex-shrink-0 p-4">
           <h1 class="text-center text-2xl">
-            <% if @current_page == :devices %>
-              Google Devices
-            <% else %>
-              <%= titleize(@current_page) %>
-            <% end %>
+            <%= titleize(@current_page) %>
           </h1>
           <div class="items-center hidden ml-4 sm:flex">
             <!-- Github link -->

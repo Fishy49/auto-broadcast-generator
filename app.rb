@@ -53,12 +53,6 @@ get '/' do
   erb :dashboard
 end
 
-get '/savegoogleauthcode' do
-  gd = GoogleDevices.new
-  gd.save_code(params['authcode'])
-  redirect '/google'
-end
-
 get '/events/:id' do
   @current_page = :event
   @event = Event[params['id']]
@@ -99,20 +93,6 @@ get '/broadcasts' do
   @current_page = :broadcasts
   @pagy, @broadcasts = pagy(Broadcast.latest)
   erb @current_page
-end
-
-get '/google/devices' do
-  @current_page = :devices
-  @gd = GoogleDevices.new
-  erb @current_page, locals: { flash: }
-end
-
-get '/:slug' do
-  @current_page = params['slug'].to_sym
-  @gd = GoogleDevices.new if @current_page == :google
-  erb @current_page, locals: { flash: }
-rescue Errno::ENOENT
-  erb :'404'
 end
 
 post '/broadcast_configuration' do
