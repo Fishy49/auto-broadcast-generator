@@ -80,8 +80,8 @@ delete '/broadcast/:id' do
   broadcast = Broadcast[params['id']]
   job = broadcast.broadcast_generation_job
   logs = job.broadcast_generation_job_logs
-  logs.each(&:delete) if logs.count.positive?
-  FileUtils.rm_f(broadcast.audio_file)
+  logs.each(&:destroy) if logs.count.positive?
+  FileUtils.rm_f(broadcast.audio_file) unless broadcast.audio_file.nil?
   job.broadcast.destroy
   job.destroy
 

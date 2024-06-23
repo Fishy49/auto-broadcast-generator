@@ -55,6 +55,7 @@ class BroadcastGenerationJob < Sequel::Model
     def script_prompt
       <<-PROMPT.freeze
         In the style of a #{CONFIG.station_era} radio broadcaster, give a news update summarizing the below events.
+        Do not include prompts, headers, or asterisks in the output.
         Do not read them all individually but group common events and summarize them.
         Do not include sound or music prompts. Mention that the broadcast is for the current time of #{Time.now.strftime('%I:00 %p')}
         The news update should be verbose and loquacious but please do not refer to yourself as either.
