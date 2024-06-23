@@ -56,6 +56,7 @@ class EmailCollector
     def purge_mailbox
       uids = @imap.uid_search(['ALL'])
       return if uids.blank?
+
       @imap.uid_store(uids, '+FLAGS', [:Deleted])
       @imap.expunge
     end
