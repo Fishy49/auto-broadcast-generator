@@ -6,6 +6,11 @@ require 'httparty'
 class ElevenLabs
   BASE_URL = 'https://api.elevenlabs.io/v1'
 
+  def self.characters_remaining
+    r = make_request(url: '/user/subscription', method: :get)
+    r['character_limit'] - r['character_count']
+  end
+
   def self.voices
     r = make_request(url: '/voices', method: :get)
     r['voices']

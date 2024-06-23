@@ -15,6 +15,12 @@ class BroadcastGenerationJob < Sequel::Model
       return
     end
 
+    characters_remaining = ElevenLabs.characters_remaining
+    if characters_remaining < 3000
+      logger.info "Only #{characters_remaining} characters remaining for ElevenLabs - exiting"
+      return
+    end
+
     logger.info('Starting BroadcastGenerationJob')
     job = BroadcastGenerationJob.create(started_at: Time.now, current_step: :prompt)
     job.logger = logger
