@@ -46,7 +46,7 @@
 
 	<div class="w-full mx-auto mb-10 rounded overflow-hidden shadow-lg" x-data="{ expanded: false }">
 	  <div class="px-6 py-4">
-	    <div class="font-bold text-xl mb-2 cursor-pointer" @click="expanded == true ? expanded = false : expanded = true">Script <span class="text-gray-400 text-xs">(Click to <span x-show="!expanded">expand</span><span x-show="expanded">collapse</span>)</span></div>
+	    <div class="font-bold text-xl mb-2 cursor-pointer" @click="expanded == true ? expanded = false : expanded = true">Script (<%= @broadcast.script.length if @broadcast.script %>) <span class="text-gray-400 text-xs">(Click to <span x-show="!expanded">expand</span><span x-show="expanded">collapse</span>)</span></div>
 	    <p class="text-gray-700 text-base" x-show="expanded">
 	      <%= @broadcast.script&.gsub(/(\r)?\n/, "<br/>") %>
 	    </p>
