@@ -10,7 +10,7 @@ class WyzeEventCollector
   def save_events
     @events.each do |event|
       Event.create(
-        created_at: DateTime.strptime(event["time"].to_s,'%Q').to_time.localtime,
+        created_at: DateTime.strptime(event['time'].to_s, '%Q').to_time.localtime,
         source: 'wyze',
         event_text: event_text(event),
         raw_source: event.to_json
@@ -20,7 +20,7 @@ class WyzeEventCollector
 
   def event_text(event)
     str = "#{event['camera_name']} detected #{event['alarm_type']}"
-    str = "#{str} and saw #{event['tags'].map{ |t| "a #{t}" }.join(" and ")}" if event['tags']
+    str = "#{str} and saw #{event['tags'].map { |t| "a #{t}" }.join(' and ')}" if event['tags']
     str
   end
 end

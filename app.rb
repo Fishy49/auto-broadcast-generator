@@ -97,7 +97,7 @@ end
 
 post '/broadcast_configuration' do
   Config::CONFIG_VARS.each do |var|
-    CONFIG.public_send("#{var}=", params[var])
+    CONFIG.public_send(:"#{var}=", params[var])
   end
   flash[:success] = 'Configuration Saved!'
   redirect '/broadcast_configuration'
