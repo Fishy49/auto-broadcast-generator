@@ -52,3 +52,5 @@ gem 'faraday', '~> 2.9'
 gem 'rubocop', '~> 1.64'
 gem 'rubocop-performance', '~> 1.21'
 gem 'rubocop-sequel', '~> 0.3.4'
+
+gem 'rubocop-rake', '~> 0.6.0'

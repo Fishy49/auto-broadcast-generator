@@ -1,5 +1,6 @@
 require:
   - rubocop-performance
+  - rubocop-rake
   - rubocop-sequel
 
 AllCops:
@@ -12,3 +13,9 @@ Layout/EndOfLine:
 
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
+
+Metrics/MethodLength:
+  Max: 11
+
+Sequel/ColumnDefault:
+  Enabled: false

@@ -23,7 +23,6 @@ class BroadcastGenerationJob < Sequel::Model
     job.generate!
   end
 
-  # rubocop:disable Metrics/MethodLength
   def generate!
     do_prompt!
     do_script!
@@ -37,7 +36,6 @@ class BroadcastGenerationJob < Sequel::Model
     update(current_step: :finished, completed_status: :error, finished_at: Time.now)
     raise e
   end
-  # rubocop:enable Metrics/MethodLength
 
   private
 
@@ -60,7 +58,7 @@ class BroadcastGenerationJob < Sequel::Model
         Do not include sound or music prompts. Mention that the broadcast is for the current time of #{Time.now.strftime('%I:00 %p')}
         The news update should be verbose and loquacious but please do not refer to yourself as either.
         The station name is #{CONFIG.station_frequency} #{CONFIG.station_name} and your radio broadcaster name is #{CONFIG.broadcaster_name}.
-        At some point in the broadcast advertise for a fictional product that might have existed in the #{CONFIG.station_era} or tell a joke.
+        At some point in the broadcast advertise for a fictional product that might have existed in the #{CONFIG.station_era} or tell a joke, do not do both.
         Give an introduction to the news report and a sign off.
         Here are the events:
       PROMPT
