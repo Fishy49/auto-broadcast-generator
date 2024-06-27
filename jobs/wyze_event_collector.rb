@@ -20,7 +20,7 @@ class WyzeEventCollector
 
   def event_text(event)
     str = "#{event['camera_name']} detected #{event['alarm_type']}"
-    if event['tags']
+    if event['tags'].count > 0
       verb = event['alarm_type'].downcase == 'sound' ? 'heard' : 'saw'
       str = "#{str} and #{verb} #{event['tags'].map { |t| "a #{t}" }.join(' and ')}"
     end
