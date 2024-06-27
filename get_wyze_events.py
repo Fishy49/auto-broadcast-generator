@@ -55,7 +55,8 @@ macs = [backyard_mac, street_corner_mac, dining_room_mac]
 camera_names = {
     "AN_RSCW_D03F2765FA3C": "Backyard Camera",
     "AN_RSCW_80482C03F506": "Street Corner Camera",
-    "D03F27A8B7AB": "Dining Room Camera"
+    "D03F27A8B7AB": "Dining Room Camera",
+    "80482C26E464": "Front Doorbell"
 }
 
 now = datetime.now()
