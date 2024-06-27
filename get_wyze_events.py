@@ -49,8 +49,9 @@ except WyzeApiError as e:
 backyard_mac = "AN_RSCW_D03F2765FA3C"
 street_corner_mac = "AN_RSCW_80482C03F506"
 dining_room_mac = "D03F27A8B7AB"
+doorbell_mac = "80482C26E464"
 
-macs = [backyard_mac, street_corner_mac, dining_room_mac]
+macs = [backyard_mac, street_corner_mac, dining_room_mac, doorbell_mac]
 
 camera_names = {
     "AN_RSCW_D03F2765FA3C": "Backyard Camera",
