@@ -9,8 +9,13 @@ class WyzeEventCollector
 
   def save_events
     @events.each do |event|
+      event_time = DateTime.strptime(event['time'].to_s, '%Q').to_time.localtime
+      event_text = event_text(event)
+      existing_event = Event.where(created_at: event_time, event_text: event_text)
+
+      next if existing_event.present?
       Event.create(
-        created_at: DateTime.strptime(event['time'].to_s, '%Q').to_time.localtime,
+        created_at: event_time,
         source: 'wyze',
         event_text: event_text(event),
         raw_source: event.to_json
