@@ -52,6 +52,8 @@ mac_map = {}
 for device in devices:
     mac_map[device.mac] = device.nickname
 
+twelve_hours_ago = datetime.now() - timedelta(hours=12)
+
 try:
     output_format = []
     for mac in mac_map.keys():
