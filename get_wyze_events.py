@@ -46,26 +46,15 @@ except WyzeApiError as e:
         access_token, refresh_token = read_tokens_from_file()
         client = Client(token=access_token, refresh_token=refresh_token)
 
-backyard_mac = "AN_RSCW_D03F2765FA3C"
-street_corner_mac = "AN_RSCW_80482C03F506"
-dining_room_mac = "D03F27A8B7AB"
-doorbell_mac = "80482C26E464"
-
-macs = [backyard_mac, street_corner_mac, dining_room_mac, doorbell_mac]
-
-camera_names = {
-    "AN_RSCW_D03F2765FA3C": "Backyard Camera",
-    "AN_RSCW_80482C03F506": "Street Corner Camera",
-    "D03F27A8B7AB": "Dining Room Camera",
-    "80482C26E464": "Front Doorbell"
-}
-
-now = datetime.now()
-twelve_hours_ago = now - timedelta(hours=12)
+# Pull all devices and build a map out of the mac address and the device name
+devices = client.devices_list()
+mac_map = {}
+for device in devices:
+    mac_map[device.mac] = device.nickname
 
 try:
     output_format = []
-    for mac in macs:
+    for mac in mac_map.keys():
         events = client.events.list(device_ids=[mac], begin=twelve_hours_ago)
         for event in events:
             output_format.append(
