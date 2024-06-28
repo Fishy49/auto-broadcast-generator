@@ -61,7 +61,7 @@ try:
         for event in events:
             output_format.append(
                 {
-                    "camera_name": camera_names[event.mac],
+                    "camera_name": mac_map[event.mac],
                     "alarm_type": event.alarm_type.description,
                     "tags": list(map(lambda tag: tag.description, event.tags)),
                     "time": event.time
