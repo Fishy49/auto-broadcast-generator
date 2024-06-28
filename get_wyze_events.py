@@ -63,7 +63,7 @@ try:
                 {
                     "camera_name": mac_map[event.mac],
                     "alarm_type": event.alarm_type.description,
-                    "tags": list(map(lambda tag: tag.description, event.tags)),
+                    "tags": [tag.description for tag in event.tags if tag is not None],
                     "time": event.time
                 }
             )
