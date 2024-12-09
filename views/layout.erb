@@ -151,7 +151,7 @@
 
             <!-- Links -->
             <div class="flex-1 px-4 space-y-2 overflow-hidden hover:overflow-auto">
-              <% [:dashboard, :broadcast_configuration, :events, :broadcasts, :admin].each do |slug| %>
+              <% [:broadcast_configuration, :events, :broadcasts].each do |slug| %>
                 <a href="/<%= slug %>" class="<%= (@current_page == slug) ? 'flex items-center w-full space-x-2 text-white bg-gray-600 rounded-lg' : 'flex items-center space-x-2 text-gray-600 transition-colors rounded-lg group hover:bg-gray-600 hover:text-white' %>">
                   <span aria-hidden="true" class="<%= (@current_page == slug) ? 'p-2 bg-gray-700 rounded-lg' : 'p-2 transition-colors rounded-lg group-hover:bg-gray-700 group-hover:text-white' %>">
                     <%= partial("svg/#{slug}".to_sym) %>

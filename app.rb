@@ -51,8 +51,9 @@ enable :sessions
 use Rack::Flash
 
 get '/' do
-  @current_page = :dashboard
-  erb :dashboard
+  @current_page = :broadcasts
+  @pagy, @broadcasts = pagy(Broadcast.latest)
+  erb @current_page
 end
 
 get '/events/:id' do
