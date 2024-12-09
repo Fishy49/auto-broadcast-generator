@@ -9,6 +9,7 @@ require 'securerandom'
 require 'sqlite3'
 require 'sequel'
 require 'uri'
+require 'dotiw'
 
 Bundler.require
 
@@ -27,6 +28,7 @@ CONFIG = Config.new(DB)
 helpers do
   include Pagy::Backend
   include Pagy::Frontend
+  include DOTIW::Methods
 
   def partial(template, locals = {})
     erb(template, layout: false, locals:)

@@ -54,3 +54,5 @@ gem 'rubocop-performance', '~> 1.21'
 gem 'rubocop-sequel', '~> 0.3.4'
 
 gem 'rubocop-rake', '~> 0.6.0'
+
+gem 'dotiw', '~> 5.3'

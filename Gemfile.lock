@@ -21,6 +21,9 @@ GEM
     date (3.3.4)
     debug_inspector (1.2.0)
     dotenv (2.8.1)
+    dotiw (5.3.3)
+      activesupport
+      i18n
     erubi (1.13.0)
     faker (2.23.0)
       i18n (>= 1.8.11, < 2)
@@ -137,6 +140,7 @@ DEPENDENCIES
   binding_of_caller (~> 1.0)
   clockwork (~> 3.0)
   dotenv (~> 2.8)
+  dotiw (~> 5.3)
   faker (~> 2.23)
   faraday (~> 2.9)
   httparty (~> 0.21.0)

@@ -11,9 +11,10 @@ class WyzeEventCollector
     @events.each do |event|
       event_time = DateTime.strptime(event['time'].to_s, '%Q').to_time.localtime
       event_text = event_text(event)
-      existing_event = Event.where(created_at: event_time, event_text: event_text)
+      existing_event = Event.where(created_at: event_time, event_text:)
 
       next if existing_event.present?
+
       Event.create(
         created_at: event_time,
         source: 'wyze',
@@ -25,7 +26,7 @@ class WyzeEventCollector
 
   def event_text(event)
     str = "#{event['camera_name']} detected #{event['alarm_type']}"
-    if event['tags'].count > 0
+    if event['tags'].count.positive?
       verb = event['alarm_type'].downcase == 'sound' ? 'heard' : 'saw'
       str = "#{str} and #{verb} #{event['tags'].map { |t| "a #{t}" }.join(' and ')}"
     end
