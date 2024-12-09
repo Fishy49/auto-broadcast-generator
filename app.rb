@@ -95,6 +95,11 @@ get '/broadcasts' do
   erb @current_page
 end
 
+get '/broadcast_configuration' do
+  @current_page = :broadcast_configuration
+  erb @current_page
+end
+
 post '/broadcast_configuration' do
   Config::CONFIG_VARS.each do |var|
     CONFIG.public_send(:"#{var}=", params[var])
