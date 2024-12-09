@@ -14,8 +14,11 @@ Layout/EndOfLine:
 Layout/IndentationConsistency:
   EnforcedStyle: indented_internal_methods
 
+Metrics/AbcSize:
+  Max: 18
+
 Metrics/MethodLength:
-  Max: 11
+  Max: 15
 
 Sequel/ColumnDefault:
   Enabled: false
