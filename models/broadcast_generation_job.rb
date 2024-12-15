@@ -64,7 +64,7 @@ class BroadcastGenerationJob < Sequel::Model
         Do not include sound or music prompts. Mention that the broadcast is for the current time of #{Time.now.strftime('%I:00 %p')}
         The news update should be verbose and loquacious but please do not refer to yourself as either.
         The station name is #{CONFIG.station_frequency} #{CONFIG.station_name} and your radio broadcaster name is #{CONFIG.broadcaster_name}.
-        At some point in the broadcast advertise for a fictional product that might have existed in the #{CONFIG.station_era} or tell a joke, do not do both.
+        At some point in the broadcast advertise for a ridiculous fictional product from the #{CONFIG.station_era} or tell a joke, do not do both.
         Give an introduction to the news report and a sign off.
         Here are the events:
       PROMPT
