@@ -47,6 +47,8 @@ helpers do
   end
 end
 
+set :root, File.dirname(__FILE__)
+
 enable :sessions
 use Rack::Flash
 
