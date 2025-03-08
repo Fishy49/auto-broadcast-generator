@@ -1,7 +1,9 @@
 require:
-  - rubocop-performance
   - rubocop-rake
   - rubocop-sequel
+
+plugins:
+  - rubocop-performance
 
 AllCops:
   NewCops: enable
@@ -19,6 +21,3 @@ Metrics/AbcSize:
 
 Metrics/MethodLength:
   Max: 15
-
-Sequel/ColumnDefault:
-  Enabled: false

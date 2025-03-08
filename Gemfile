@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-ruby '3.2.0'
+ruby '3.4.2'
 
 gem 'faker', '~> 2.23'
 gem 'sinatra', '~> 2.1'
@@ -18,7 +18,7 @@ gem 'logger', '~> 1.5'
 
 gem 'activesupport', '= 7.0.8'
 
-gem 'ruby-openai', '~> 4.0'
+gem 'ruby-openai', '~> 7.0'
 
 gem 'httparty', '~> 0.21.0'
 
@@ -45,7 +45,7 @@ gem 'pagy', '~> 6.0'
 
 gem 'securerandom', '~> 0.2.2'
 
-gem 'tokenizers', '~> 0.3.3'
+gem 'tokenizers', '~> 0.5.4'
 
 gem 'faraday', '~> 2.9'
 
@@ -56,3 +56,10 @@ gem 'rubocop-sequel', '~> 0.3.4'
 gem 'rubocop-rake', '~> 0.6.0'
 
 gem 'dotiw', '~> 5.3'
+
+gem 'benchmark', '~> 0.4.0'
+
+gem 'mutex_m', '~> 0.3.0'
+
+gem 'csv', '~> 3.3'
+gem 'ostruct', '~> 0.6.1'

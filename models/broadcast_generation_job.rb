@@ -94,7 +94,7 @@ class BroadcastGenerationJob < Sequel::Model
 
       log('Requesting Script')
       messages = [{ role: 'user', content: broadcast.prompt }]
-      response = OpenAi.client.chat(parameters: { model: 'gpt-4o', messages: })
+      response = OpenAi.client.chat(parameters: { model: 'gpt-4.5-preview', messages: })
       script = response.dig('choices', 0, 'message', 'content')
       log('Saving Script')
       broadcast.update(script:)
