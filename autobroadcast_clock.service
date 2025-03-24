@@ -8,7 +8,7 @@ Type=simple
 User=rick
 Group=rick
 WorkingDirectory=/home/rick/apps/auto-broadcast-generator
-ExecStart=/usr/local/bin/fish -ic "source.env && bundle exec clockwork clock.rb"
+ExecStart=/usr/bin/fish -ic "source .env && bundle exec clockwork clock.rb"
 Restart=always
 RestartSec=1
 

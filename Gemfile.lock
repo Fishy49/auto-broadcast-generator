@@ -135,6 +135,7 @@ GEM
     timeout (0.4.3)
     tokenizers (0.5.4)
       rb_sys
+    tokenizers (0.5.4-aarch64-linux)
     tokenizers (0.5.4-x86_64-linux)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
@@ -144,6 +145,7 @@ GEM
     uri (1.0.3)
 
 PLATFORMS
+  aarch64-linux
   armv7l-linux-eabihf
   x86_64-linux
 
