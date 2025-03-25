@@ -7,8 +7,8 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 ruby '3.4.2'
 
 gem 'faker', '~> 2.23'
-gem 'sinatra', '~> 2.1'
-gem 'sinatra-contrib', '~> 2.1'
+gem "sinatra", ">= 4.1.0"
+gem 'sinatra-contrib', '~> 4.1'
 
 gem 'puma', '~> 6.0'
 
@@ -65,3 +65,5 @@ gem 'csv', '~> 3.3'
 gem 'ostruct', '~> 0.6.1'
 
 gem "base64", "~> 0.2.0"
+gem "json", ">= 2.10.2"
+gem "rack", ">= 2.2.13"
