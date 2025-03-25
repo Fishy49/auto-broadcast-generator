@@ -67,3 +67,5 @@ gem 'ostruct', '~> 0.6.1'
 gem "base64", "~> 0.2.0"
 gem "json", ">= 2.10.2"
 gem "rack", ">= 2.2.13"
+
+gem "rackup", "~> 2.2"
