@@ -60,6 +60,6 @@ class OpenWeatherCollector
     # rubocop:enable Metrics/AbcSize
 
     def to_date_string(time)
-      time.strftime("%A, %B the #{time.day.ordinalize}")
+      time.strftime("%A, %B the #{Time.at(current['dt']).day.ordinalize}")
     end
 end

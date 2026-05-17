@@ -30,6 +30,33 @@ class ElevenLabs
     filename
   end
 
+def get_eleven_labs(voice_id, script, filename)
+  uri = URI("#{BASE_URL}/text-to-speech/#{voice_id}/stream")
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+    
+  request = Net::HTTP::Post.new(uri)
+  request['Accept'] = 'application/json',
+  request['xi-api-key'] = ENV['ELEVENLABS_API_KEY']
+  request['Content-Type'] = 'application/json',
+  request['Accept'] = 'audio/mpeg'
+
+  request.body = { text: text, model_id: 'eleven_monolingual_v1' }.to_json
+    
+  File.open(filename, 'wb') do |file|
+    http.request(request) do |response|
+      raise StandardError, "Non-success status code while streaming #{response.code}" unless response.code == '200'
+        
+      response.read_body do |chunk|
+        file.write(chunk)
+      end
+    end
+  end
+    
+  filename
+end
+
+
   def self.make_request(url:, method:, query: {}, headers: {}, body: {})
     HTTParty.send(method,
                   "#{BASE_URL}#{url}",
